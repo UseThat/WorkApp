@@ -1,48 +1,51 @@
 package pl.workapp.model;
 
 public class Work {
-    private static final int EMPLOYEE_CAPACITY = 100;
-    private static final int GUEST_CAPACITY = 10;
-    private Employee [] employees = new Employee[EMPLOYEE_CAPACITY];
-    private Guest [] guests = new Guest[GUEST_CAPACITY];
-    private int employeeCounter;
-    private int guestCounter;
+    private static final int PERSON_CAPACITY = 100;
+    private Person [] persons = new Person[PERSON_CAPACITY];
+    private int personCounter;
 
     public void addEmployee(Employee employee){
-        if(employeeCounter < EMPLOYEE_CAPACITY){
-            employees[employeeCounter] = employee;
-            employeeCounter ++;
+        if(personCounter < PERSON_CAPACITY){
+            persons[personCounter] = employee;
+            personCounter ++;
         }else{
             System.out.println("Max employee capacity.");
         }
     }
 
     public void printEmployees(){
+        int employeeCounter = 0;
+        for(int i = 0 ; i < personCounter ; i++){
+            if(persons[i] instanceof Employee) {
+                System.out.println(persons[i]);
+                employeeCounter ++;
+            }
+        }
         if(employeeCounter == 0){
             System.out.println("No employee in company");
-        }else{
-            for(int i = 0; i< employeeCounter; i++){
-                System.out.println(employees[i]);
-            }
         }
     }
 
     public void addGuest(Guest guest){
-        if(guestCounter < GUEST_CAPACITY){
-            guests[guestCounter] = guest;
-            guestCounter ++;
+        if(personCounter < PERSON_CAPACITY){
+            persons[personCounter] = guest;
+            personCounter ++;
         }else{
             System.out.println("Max guest capacity.");
         }
     }
 
     public void printGuests(){
+        int guestCounter = 0;
+        for(int i = 0 ; i < personCounter ; i++){
+            if(persons[i] instanceof Guest) {
+                System.out.println(persons[i]);
+                guestCounter ++;
+            }
+        }
         if(guestCounter == 0){
             System.out.println("No employee in company");
-        }else{
-            for(int i = 0; i< guestCounter; i++){
-                System.out.println(guests[i]);
-            }
         }
     }
 
