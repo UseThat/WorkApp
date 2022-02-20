@@ -28,6 +28,6 @@ public class Guest extends Person {
 
     @Override
     public String toString() {
-        return getFirstName() +" "+getLastName()+" email: "+email+" phone: "+phone;
+        return super.toString()+" email: "+email+" phone: "+phone;
     }
 }

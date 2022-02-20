@@ -5,25 +5,30 @@ public class Person {
     private String lastName;
 
 
-    public Person(String firstName, String lastName){
+    Person(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public String getFirstName() {
+    String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
     }
 
 }
