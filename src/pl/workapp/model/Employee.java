@@ -38,6 +38,6 @@ public class Employee extends Person{
 
     @Override
     public String toString() {
-        return getFirstName() +" "+getLastName()+ " salary: "+salary+" company mail: "+companyMail+" gender: "+gender;
+        return getFirstName() +" "+getLastName()+ " salary: "+getSalary()+" company mail: "+getCompanyMail()+" gender: "+getGender();
     }
 }

@@ -21,8 +21,8 @@ public class Work {
         if(employeeCounter == 0){
             System.out.println("No employee in company");
         }else{
-            for(int i = 0; i< employees.length; i++){
-                System.out.println(employees);
+            for(int i = 0; i< employeeCounter; i++){
+                System.out.println(employees[i]);
             }
         }
     }
@@ -40,8 +40,8 @@ public class Work {
         if(guestCounter == 0){
             System.out.println("No employee in company");
         }else{
-            for(int i = 0; i< guests.length; i++){
-                System.out.println(guests);
+            for(int i = 0; i< guestCounter; i++){
+                System.out.println(guests[i]);
             }
         }
     }
