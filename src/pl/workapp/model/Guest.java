@@ -30,4 +30,22 @@ public class Guest extends Person {
     public String toString() {
         return super.toString()+" email: "+email+" phone: "+phone;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Guest guest = (Guest) o;
+
+        if (email != null ? !email.equals(guest.email) : guest.email != null) return false;
+        return phone != null ? phone.equals(guest.phone) : guest.phone == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = email != null ? email.hashCode() : 0;
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        return result;
+    }
 }

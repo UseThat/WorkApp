@@ -40,4 +40,29 @@ public class Employee extends Person{
     public String toString() {
         return super.toString() + " salary: "+getSalary()+" company mail: "+getCompanyMail()+" gender: "+getGender();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Employee employee = (Employee) o;
+
+        if (Double.compare(employee.salary, salary) != 0) return false;
+        if (companyMail != null ? !companyMail.equals(employee.companyMail) : employee.companyMail != null)
+            return false;
+        return gender != null ? gender.equals(employee.gender) : employee.gender == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        long temp;
+        temp = Double.doubleToLongBits(salary);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (companyMail != null ? companyMail.hashCode() : 0);
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        return result;
+    }
 }
