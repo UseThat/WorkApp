@@ -6,21 +6,15 @@ import pl.workapp.model.Guest;
 import pl.workapp.model.Work;
 
 public class WorkLogic {
-    private static final int EXIT = 0;
-    private static final int ADD_EMPLOYEE = 1;
-    private static final int ADD_GUEST = 2;
-    private static final int PRINT_EMPLOYEE = 3;
-    private static final int PRINT_GUEST = 4;
-
-    private DataReader dataReader = new DataReader();
+   private DataReader dataReader = new DataReader();
 
     private Work work = new Work();
 
     public void appLoop() {
-        int option;
+        Option option;
         do {
             printOptions();
-            option = dataReader.getInt();
+            option = Option.createFromInt(dataReader.getInt());
 
             switch (option) {
                 case ADD_EMPLOYEE:
@@ -42,18 +36,16 @@ public class WorkLogic {
                     System.out.println("No option choose. Try again");
             }
 
-        } while (option != EXIT);
+        } while (option != Option.EXIT);
 
 
     }
 
     private void printOptions() {
         System.out.println("Choos option: ");
-        System.out.println(EXIT + " - exit");
-        System.out.println(ADD_EMPLOYEE + " - add employee");
-        System.out.println(ADD_GUEST + " - add guest");
-        System.out.println(PRINT_EMPLOYEE + " - print employee");
-        System.out.println(PRINT_GUEST + " - print guest");
+        for(Option option: Option.values()){
+            System.out.println(option);
+        }
     }
 
     private void addEmployee(){
