@@ -1,12 +1,17 @@
 package pl.workapp.app;
 
+import pl.workapp.exception.NoSuchOptionException;
 import pl.workapp.io.DataReader;
+import pl.workapp.io.PrintControler;
 import pl.workapp.model.Employee;
 import pl.workapp.model.Guest;
 import pl.workapp.model.Work;
 
+import java.util.InputMismatchException;
+
 public class WorkLogic {
-   private DataReader dataReader = new DataReader();
+    private PrintControler printer = new PrintControler();
+   private DataReader dataReader = new DataReader(printer);
 
     private Work work = new Work();
 
@@ -14,7 +19,7 @@ public class WorkLogic {
         Option option;
         do {
             printOptions();
-            option = Option.createFromInt(dataReader.getInt());
+            option = getOption();
 
             switch (option) {
                 case ADD_EMPLOYEE:
@@ -46,6 +51,22 @@ public class WorkLogic {
         for(Option option: Option.values()){
             System.out.println(option);
         }
+    }
+
+    private Option getOption(){
+        boolean optionOk = false;
+        Option option = null;
+        while(!optionOk){
+            try{
+                option = Option.createFromInt(dataReader.getInt());
+                optionOk = true;
+            } catch (NoSuchOptionException e) {
+                printer.printLine(e.getMessage()+ ", choose one again.");
+            } catch (InputMismatchException e){
+                printer.printLine("Please choose number one more time. ");
+            }
+        }
+        return option;
     }
 
     private void addEmployee(){

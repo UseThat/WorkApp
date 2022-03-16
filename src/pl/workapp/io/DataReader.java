@@ -7,15 +7,22 @@ import java.util.Scanner;
 
 public class DataReader {
     private Scanner scanner = new Scanner(System.in);
+    private PrintControler printControler;
+
+    public DataReader(PrintControler printControler){
+        this.printControler = printControler;
+    }
 
     private void close(){
         scanner.close();
     }
 
     public int getInt(){
-        int number = scanner.nextInt();
-        scanner.nextLine();
-        return number;
+        try{
+            return scanner.nextInt();
+        }finally {
+            scanner.nextLine();
+        }
     }
 
     public Employee readAndCreateEmployee(){
