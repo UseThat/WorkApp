@@ -25,14 +25,21 @@ public class DataReader {
         }
     }
 
+    public double getDouble(){
+        try{
+            return scanner.nextDouble();
+        }finally {
+            scanner.nextLine();
+        }
+    }
+
     public Employee readAndCreateEmployee(){
         System.out.println("Set Employee first name: ");
         String firstName = scanner.nextLine();
         System.out.println("Set Employee last name: ");
         String lastName = scanner.nextLine();
         System.out.println("Set Employee salary: ");
-        double salary = scanner.nextDouble();
-        scanner.nextLine();
+        double salary = getDouble();
         System.out.println("Set Employee email: ");
         String companyEmail = scanner.nextLine();
         System.out.println("Set Employee phone: ");

@@ -70,8 +70,15 @@ public class WorkLogic {
     }
 
     private void addEmployee(){
-        Employee employee = dataReader.readAndCreateEmployee();
-        work.addEmployee(employee);
+        try{
+            Employee employee = dataReader.readAndCreateEmployee();
+            work.addEmployee(employee);
+        }catch (InputMismatchException e){
+            printer.printLine("Unable to create employee!");
+        }catch (ArrayIndexOutOfBoundsException e){
+            printer.printLine("Unable to add new employee. Max capacity!");
+        }
+
     }
 
     private void printEmployees() {
@@ -79,8 +86,13 @@ public class WorkLogic {
     }
 
     private void addGuest(){
-        Guest guest = dataReader.readAndCreateGuest();
-        work.addGuest(guest);
+        try{
+            Guest guest = dataReader.readAndCreateGuest();
+            work.addGuest(guest);
+        }catch (ArrayIndexOutOfBoundsException e){
+            printer.printLine("Unable to add new guest. Max capacity!");
+        }
+
     }
 
     private void printGuests() {
