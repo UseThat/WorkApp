@@ -25,6 +25,10 @@ public class DataReader {
         }
     }
 
+    public void closeReader(){
+        scanner.close();
+    }
+
     public double getDouble(){
         try{
             return scanner.nextDouble();
